@@ -11,7 +11,7 @@ const sliderController = async (req, res) => {
     if(req.method=='POST'){
         try {
             const count=await Slider.countDocuments();
-            if (count <1){
+            if (count <2){
                 const file = req.file;
                 if (!file) return res.status(400).json({ message: 'No image in the request' });
         
