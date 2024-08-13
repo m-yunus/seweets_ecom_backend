@@ -10,8 +10,12 @@ const port = process.env.PORT || 8080;
 
 dotenv.config();
 app.use(bodyParser.json());
-app.use("/public/slider", express.static(__dirname + "/public/slider"));
-app.use(cors());
+// app.use("/public/slider", express.static(__dirname + "/public/slider"));
+app.use(cors({
+  origin: '*', // Adjust this to your frontend's domain, e.g., 'http://localhost:3000'
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}));
 //routes
 app.use(`${process.env.api_url}`, userRoutes);
 
